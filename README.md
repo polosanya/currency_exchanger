@@ -1,6 +1,6 @@
 # Currency exchanger
 
-- [DEMO LINK](https://polosanya.github.io/demo-expense-app/)
+- [DEMO LINK](http://polosanya.github.io/currency_exchanger)
 
 ## Technologies
 React, TypeScript, HTML, CSS/SASS.

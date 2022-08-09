@@ -33,8 +33,8 @@ function App() {
     const dataFromServer = await getData();
     dataFromServer.sort((a: Data, b: Data) => a.cc.localeCompare(b.cc))
     setData([...data, ...dataFromServer]);
-    setLeftOption(JSON.stringify(dataFromServer[0]));
-    setRightOption(JSON.stringify(dataFromServer[0]));
+    setLeftOption(JSON.stringify(data[0]));
+    setRightOption(JSON.stringify(data[0]));
   };
 
   const handleInputChange = (inputLocation: Location, value: string) => {
@@ -60,10 +60,27 @@ function App() {
   const handleOptionChange = (optionLocation: Location, value: string) => {
     if (optionLocation === Location.Left) {
       setLeftOption(value);
+
+      const leftRate = JSON.parse(value).rate;
+      const rightRate = JSON.parse(rightOption).rate;
+
+      const exchangeRate = (leftRate / rightRate * +leftInput).toFixed(2);
+    
+      setrightInput(exchangeRate.toString());
     }
 
-    if (optionLocation === Location.Right) {
+    if (optionLocation === Location.Right) {  
       setRightOption(value);
+
+      const leftRate = JSON.parse(leftOption).rate;
+      const rightRate = JSON.parse(value).rate;
+
+      console.log(JSON.parse(leftOption).txt);
+
+      const exchangeRate = (rightRate / leftRate * +rightInput).toFixed(2);
+
+      console.log(leftRate, rightRate, rightInput);
+      setleftInput(exchangeRate.toString());
     }
   };
 
